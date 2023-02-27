@@ -1,7 +1,12 @@
-import './Settings.css';
-import React from 'react';
+import React, { useState } from 'react';
+import { ImMenu } from 'react-icons/im';
 
 const Settings = () => {
-  return <h1>Settings</h1>;
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="settings">
+      <ImMenu className="menu_icon" onClick={() => setIsOpen(true)} />
+    </div>
+  );
 };
 export default Settings;

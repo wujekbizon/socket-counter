@@ -35,18 +35,24 @@ img {
   height: auto;
 }
 
+body {
+  background-color: grey;
+}
+
 .app {
   width: 100vh;
   height: 100vh;
   padding: 64px;
-  background-color: white;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+/* Card component CSS */
 .card {
+  padding: 15px;
   width: 350px;
   height: 350px;
   background-color: rgb(90, 95, 99);
@@ -123,4 +129,23 @@ img {
 
 .icon {
   font-size: 28px;
+}
+
+/* Settings component CSS */
+
+.settings {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transform: rotate(-60deg); */
+  cursor: pointer;
+}
+
+.menu_icon {
+  font-size: 35px;
 }

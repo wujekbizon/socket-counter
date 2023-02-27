@@ -20,8 +20,8 @@ const App = () => {
         onChange={(e) => setPlayer2Name(e.target.value)}
       />
       <Card playerName={playerName} />
-      <Card playerName={player2Name} />
       <Settings />
+      <Card playerName={player2Name} />
     </main>
   );
 };
