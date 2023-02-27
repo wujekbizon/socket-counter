@@ -93,6 +93,18 @@ img {
   cursor: pointer;
 }
 
+.lost {
+  background-color: rgba(231, 33, 19, 0.5);
+}
+
+.lost .btn_success:hover {
+  background-color: rgba(133, 178, 116, 1);
+}
+
+.lost .btn_danger:hover {
+  background-color: rgba(249, 113, 103, 1);
+}
+
 .btn_success {
   background-color: rgba(133, 178, 116, 1);
 }
