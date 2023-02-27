@@ -5,11 +5,11 @@ import Timer from './components/Timer/Timer';
 
 const App = () => {
   return (
-    <>
+    <main className="app">
       <Timer />
       <Card />
       <Settings />
-    </>
+    </main>
   );
 };
 export default App;
