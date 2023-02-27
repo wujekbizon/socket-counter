@@ -22,6 +22,7 @@ ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
+  font-family: 'Nunito', serif;
 }
 
 ol,
@@ -46,33 +47,32 @@ img {
 }
 
 .card {
-  width: 400px;
-  height: 500px;
-  background-color: rgba(153, 157, 160, 1);
+  width: 350px;
+  height: 350px;
+  background-color: rgb(90, 95, 99);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  border: 1px solid black;
 }
 
 .player_name {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.player_name input {
-  height: 35px;
-  background-color: transparent;
+.player_name h2 {
   color: greenyellow;
-  font-size: 25px;
-  font-family: 'Inter Black', sans-serif;
-  outline: none;
-  border: none;
+  font-size: 28px;
 }
 
 .player_life h1 {
-  font-size: 40px;
+  font-size: 75px;
+  font-weight: 700;
   color: red;
 }
 
@@ -80,13 +80,35 @@ img {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.player_buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  width: 37px;
+  height: 37px;
+  cursor: pointer;
 }
 
 .btn_success {
   background-color: rgba(133, 178, 116, 1);
 }
 
+.btn_success:hover {
+  background-color: rgba(106, 158, 87, 1);
+}
+
 .btn_danger {
-  background-color: rgba(249, 169, 103, 1);
+  background-color: rgba(249, 113, 103, 1);
+}
+
+.btn_danger:hover {
+  background-color: rgb(214, 90, 81);
+}
+
+.icon {
+  font-size: 28px;
 }

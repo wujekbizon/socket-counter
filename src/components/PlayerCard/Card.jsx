@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import { GiHeartMinus, GiHeartPlus } from 'react-icons/gi';
 
-const Card = () => {
-  const [playerName, setPlayerName] = useState('Player 1');
+const Card = ({ playerName }) => {
   const [player_life, setPlayerLife] = useState(20);
 
-  console.log(playerName);
   return (
     <section className="card">
       <div className="player_name">
-        <input
-          type="text"
-          value={playerName}
-          onChange={(e) => setPlayerName(e.target.value)}
-        />
+        <h2>{playerName}</h2>
       </div>
       <div className="player_life">
         <h1>{player_life}</h1>
@@ -23,13 +17,13 @@ const Card = () => {
           onClick={() => setPlayerLife(player_life - 1)}
           className="btn_danger"
         >
-          <GiHeartMinus />
+          <GiHeartMinus className="icon" />
         </button>
         <button
           onClick={() => setPlayerLife(player_life + 1)}
           className="btn_success"
         >
-          <GiHeartPlus />
+          <GiHeartPlus className="icon" />
         </button>
       </div>
     </section>
