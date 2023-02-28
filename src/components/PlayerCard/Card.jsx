@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { GiHeartMinus, GiHeartPlus } from 'react-icons/gi';
 
-const Card = ({ playerName }) => {
+const Card = ({ playerName, className }) => {
   const [player_life, setPlayerLife] = useState(20);
 
   return (
-    <section className={`${player_life === 0 && 'lost'} card`}>
+    <section className={`${player_life === 0 && 'lost'} ${className} card`}>
       <div className="player_name">
         <h2>{playerName}</h2>
       </div>

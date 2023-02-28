@@ -40,8 +40,6 @@ body {
 }
 
 .app {
-  width: 100vh;
-  height: 100vh;
   padding: 64px;
   display: flex;
   flex-direction: column;
@@ -62,6 +60,10 @@ body {
   justify-content: space-evenly;
   border-radius: 10px;
   border: 1px solid black;
+}
+
+.direction {
+  transform: rotate(180deg);
 }
 
 .player_name {
@@ -134,14 +136,14 @@ body {
 /* Settings component CSS */
 
 .settings {
-  padding: 4px 6px;
+  padding: 2px 4px;
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* transform: rotate(-60deg); */
+  margin: 20px;
   cursor: pointer;
 }
 
@@ -152,14 +154,21 @@ body {
 /* Modal Css */
 
 .modal {
-  width: 450px;
-  height: 100%;
+  width: 500px;
+  height: 600px;
   min-height: 500px;
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
-  top: 0;
+  top: calc(50% - 600px / 2);
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: calc(50% - 500px / 2);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal label {
+  color: white;
 }
