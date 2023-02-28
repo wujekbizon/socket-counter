@@ -1,11 +1,14 @@
 import React from 'react';
-import { ImMenu } from 'react-icons/im';
+import { TiThMenuOutline } from 'react-icons/ti';
 
 const Settings = ({ setIsOpen }) => {
   return (
     <>
       <div className="settings">
-        <ImMenu className="menu_icon" onClick={() => setIsOpen(true)} />
+        <TiThMenuOutline
+          className="menu_icon"
+          onClick={() => setIsOpen(true)}
+        />
       </div>
     </>
   );

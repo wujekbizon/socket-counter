@@ -118,7 +118,7 @@ body {
 }
 
 .btn_success:hover {
-  background-color: rgba(106, 158, 87, 1);
+  background-color: rgb(84, 126, 69);
 }
 
 .btn_danger {
@@ -126,7 +126,7 @@ body {
 }
 
 .btn_danger:hover {
-  background-color: rgb(214, 90, 81);
+  background-color: rgb(212, 48, 36);
 }
 
 .icon {
@@ -139,7 +139,6 @@ body {
   padding: 2px 4px;
   background-color: white;
   border: 1px solid black;
-  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,4 +170,49 @@ body {
 
 .modal label {
   color: white;
+}
+
+.btn_menu-close {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close_icon {
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.close_icon:hover {
+  color: grey;
+}
+
+.btn_reset {
+  padding: 6px 15px;
+  background-color: rgb(243, 106, 106);
+  color: white;
+  cursor: pointer;
+}
+
+.btn_reset:hover {
+  background-color: red;
+}
+
+.modal_inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.modal_inputs input {
+  height: 30px;
+  outline: none;
+  font-size: 25px;
+  width: 70%;
 }
