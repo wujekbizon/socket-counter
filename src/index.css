@@ -99,6 +99,7 @@ body {
   width: 37px;
   height: 37px;
   cursor: pointer;
+  border: none;
 }
 
 .lost {
@@ -115,6 +116,7 @@ body {
 
 .btn_success {
   background-color: rgba(133, 178, 116, 1);
+  margin-left: 10px;
 }
 
 .btn_success:hover {
@@ -123,6 +125,7 @@ body {
 
 .btn_danger {
   background-color: rgba(249, 113, 103, 1);
+  margin-left: 10px;
 }
 
 .btn_danger:hover {
@@ -131,6 +134,14 @@ body {
 
 .icon {
   font-size: 30px;
+}
+
+.sub_btns {
+  display: flex;
+}
+
+.add_btns {
+  display: flex;
 }
 
 /* Settings component CSS */
