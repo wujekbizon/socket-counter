@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GiHeartMinus, GiHeartPlus } from 'react-icons/gi';
 import { BsShieldFillMinus, BsShieldFillPlus } from 'react-icons/bs';
 
 const Card = ({ playerName, className, player_life, setPlayerLife }) => {
+  const [isWinner, setIsWinner] = useState(false);
+
   useEffect(() => {
     if (player_life <= 0) {
       setPlayerLife(0);
     }
   }, [player_life]);
+
+  console.log(player_life);
 
   return (
     <section className={`${player_life === 0 && 'lost'} ${className} card`}>

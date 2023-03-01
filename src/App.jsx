@@ -8,8 +8,8 @@ const App = () => {
   const [playerName, setPlayerName] = useState('Player 1');
   const [player2Name, setPlayer2Name] = useState('Player 2');
   const [startingLife, setStartingLife] = useState(20);
-  const [player1_life, setPlayer1Life] = useState(startingLife);
-  const [player2_life, setPlayer2Life] = useState(startingLife);
+  const [player1_life, setPlayer1Life] = useState(20);
+  const [player2_life, setPlayer2Life] = useState(20);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <main className="app">

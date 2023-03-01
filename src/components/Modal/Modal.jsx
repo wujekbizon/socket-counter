@@ -49,7 +49,7 @@ const Modal = ({
         <button className="btn_reset" onClick={onResetHandler}>
           Reset
         </button>
-        <select onChange={(e) => setStartingLife(e.target.value)}>
+        <select onChange={(e) => setStartingLife(parseInt(e.target.value))}>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.text}
