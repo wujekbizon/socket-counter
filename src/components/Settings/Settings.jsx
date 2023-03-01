@@ -1,14 +1,14 @@
 import React from 'react';
 import { TiThMenuOutline } from 'react-icons/ti';
+import { useActions } from '../../hooks/useActions';
 
 const Settings = ({ setIsOpen }) => {
+  const { openSideMenu } = useActions();
+
   return (
     <>
       <div className="settings">
-        <TiThMenuOutline
-          className="menu_icon"
-          onClick={() => setIsOpen(true)}
-        />
+        <TiThMenuOutline className="menu_icon" onClick={() => openSideMenu()} />
       </div>
     </>
   );

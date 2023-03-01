@@ -3,8 +3,11 @@ import Settings from './components/Settings/Settings';
 import Card from './components/PlayerCard/Card';
 import Timer from './components/Timer/Timer';
 import Modal from './components/Modal/Modal';
+import { useSelector } from 'react-redux';
 
 const App = () => {
+  const isMenuOpen = useSelector((state) => state.modal.isMenuOpen);
+
   const [playerName, setPlayerName] = useState('Player 1');
   const [player2Name, setPlayer2Name] = useState('Player 2');
   const [startingLife, setStartingLife] = useState(20);
@@ -27,13 +30,12 @@ const App = () => {
         player_life={player2_life}
         setPlayerLife={setPlayer2Life}
       />
-      {isOpen && (
+      {isMenuOpen && (
         <Modal
           setPlayer2Name={setPlayer2Name}
           setPlayerName={setPlayerName}
           player2Name={player2Name}
           playerName={playerName}
-          setIsOpen={setIsOpen}
           setPlayer1Life={setPlayer1Life}
           setPlayer2Life={setPlayer2Life}
           startingLife={startingLife}

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
 import { options } from '../../data/options';
+import { useActions } from '../../hooks/useActions';
 
 const Modal = ({
-  setIsOpen,
   playerName,
   player2Name,
   setPlayer2Name,
@@ -13,10 +13,12 @@ const Modal = ({
   setPlayer2Life,
   startingLife,
 }) => {
+  const { closeSideMenu } = useActions();
+
   const onResetHandler = () => {
     setPlayer1Life(startingLife);
     setPlayer2Life(startingLife);
-    setIsOpen(false);
+    closeSideMenu();
   };
 
   useEffect(() => {
@@ -58,7 +60,7 @@ const Modal = ({
         </select>
       </div>
 
-      <button className="btn_menu-close" onClick={() => setIsOpen(false)}>
+      <button className="btn_menu-close" onClick={() => closeSideMenu()}>
         {' '}
         <FaWindowClose className="close_icon" />
       </button>
