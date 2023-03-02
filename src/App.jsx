@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Settings from './components/Settings/Settings';
 import Card from './components/PlayerCard/Card';
 import Timer from './components/Timer/Timer';
@@ -13,7 +13,15 @@ const App = () => {
   const [startingLife, setStartingLife] = useState(20);
   const [player1_life, setPlayer1Life] = useState(20);
   const [player2_life, setPlayer2Life] = useState(20);
-  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (window.__args.debug && window.__args.config.build_redirect) {
+      window.location = window.__args.config.build_redirect;
+      console.log(window.location);
+      console.log(window.__args);
+    }
+  }, []);
+
   return (
     <main className="app">
       <Timer />
@@ -24,7 +32,7 @@ const App = () => {
         setPlayerLife={setPlayer1Life}
         className="direction"
       />
-      <Settings setIsOpen={setIsOpen} />
+      <Settings />
       <Card
         playerName={player2Name}
         player_life={player2_life}

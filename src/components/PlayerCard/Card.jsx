@@ -1,59 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import { GiHeartMinus, GiHeartPlus } from 'react-icons/gi';
 import { BsShieldFillMinus, BsShieldFillPlus } from 'react-icons/bs';
+import { useActions } from '../../hooks/useActions';
+import { useSelector } from 'react-redux';
 
-const Card = ({ playerName, className, player_life, setPlayerLife }) => {
-  const [isWinner, setIsWinner] = useState(false);
+const Card = ({ playerName, className }) => {
+  const { addLife, subtractLife } = useActions();
+  const playerLife = useSelector((state) => state.player.playerLife);
 
-  useEffect(() => {
-    if (player_life <= 0) {
-      setPlayerLife(0);
-    }
-  }, [player_life]);
-
-  console.log(player_life);
+  // useEffect(() => {
+  //   if (playerLife <= 0) {
+  //     setPlayerLife(0);
+  //   }
+  // }, [playerLife]);
 
   return (
-    <section className={`${player_life === 0 && 'lost'} ${className} card`}>
+    <section className={`${playerLife === 0 && 'lost'} ${className} card`}>
       <div className="player_name">
         <h2>{playerName}</h2>
       </div>
       <div className="player_life">
-        <h1>{player_life}</h1>
+        <h1>{playerLife}</h1>
       </div>
       <div className="player_buttons">
         <div className="sub_btns">
           <button
-            onClick={() =>
-              setPlayerLife(player_life <= 0 ? 0 : player_life - 1)
-            }
+            onClick={() => subtractLife()}
             className="btn_danger"
-            disabled={player_life === 0}
+            disabled={playerLife === 0}
           >
             <GiHeartMinus className="icon" />
           </button>
           <button
             className="btn_danger"
-            onClick={() =>
-              setPlayerLife(player_life <= 0 ? 0 : player_life - 5)
-            }
-            disabled={player_life === 0}
+            // onClick={() => setPlayerLife(playerLife <= 0 ? 0 : playerLife - 5)}
+            disabled={playerLife === 0}
           >
             <BsShieldFillMinus className="icon" />
           </button>
         </div>
         <div className="add_btns">
           <button
-            onClick={() => setPlayerLife(player_life + 1)}
+            onClick={() => addLife()}
             className="btn_success"
-            disabled={player_life === 0}
+            disabled={playerLife === 0}
           >
             <GiHeartPlus className="icon" />
           </button>
           <button
             className="btn_success"
-            disabled={player_life === 0}
-            onClick={() => setPlayerLife(player_life + 5)}
+            disabled={playerLife === 0}
+            // onClick={() => setPlayerLife(playerLife + 5)}
           >
             <BsShieldFillPlus className="icon" />
           </button>
