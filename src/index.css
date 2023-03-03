@@ -181,6 +181,12 @@ body {
 
 .modal label {
   color: white;
+  margin: 0 15px;
+}
+
+.modal_settings {
+  display: flex;
+  align-items: center;
 }
 
 .btn_menu-close {

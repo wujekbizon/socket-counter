@@ -10,6 +10,8 @@ import {
   setGameOver,
   resetGame,
   setStartingLife,
+  setNumberOfPlayers,
+  setDefaultPlayers,
 } from './slices/playersSlice';
 
 export const store = configureStore({
@@ -30,4 +32,6 @@ export const actionCreators = {
   setGameOver,
   resetGame,
   setStartingLife,
+  setNumberOfPlayers,
+  setDefaultPlayers,
 };

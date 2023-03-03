@@ -1,12 +1,19 @@
 import React from 'react';
 import { FaWindowClose } from 'react-icons/fa';
-import { options } from '../../data/options';
+import { options, playerOptions } from '../../data/options';
 import { useActions } from '../../hooks/useActions';
 import { useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
 const Modal = () => {
-  const { closeSideMenu, changeName, resetGame, setStartingLife } =
-    useActions();
+  const {
+    closeSideMenu,
+    changeName,
+    resetGame,
+    setStartingLife,
+    setNumberOfPlayers,
+    setDefaultPlayers,
+  } = useActions();
   const players = useSelector((state) => state.player.players);
 
   const onResetHandler = () => {
@@ -14,10 +21,51 @@ const Modal = () => {
     closeSideMenu();
   };
 
+  const onAddPlayersHandler = (e) => {
+    const numPlayers = parseInt(e.target.value);
+    if (numPlayers === 2) {
+      setDefaultPlayers();
+    } else if (numPlayers === 3) {
+      setDefaultPlayers();
+      setNumberOfPlayers({
+        playerId: nanoid(),
+        playerLife: 20,
+        playerName: 'DefaultPlayer',
+      });
+    } else if (numPlayers === 4) {
+      setDefaultPlayers();
+      setNumberOfPlayers({
+        playerId: nanoid(),
+        playerLife: 20,
+        playerName: 'DefaultPlayer',
+      });
+      setNumberOfPlayers({
+        playerId: nanoid(),
+        playerLife: 20,
+        playerName: 'DefaultPlayer',
+      });
+    } else if (numPlayers === 5) {
+      setDefaultPlayers();
+      setNumberOfPlayers({
+        playerId: nanoid(),
+        playerLife: 20,
+        playerName: 'DefaultPlayer',
+      });
+      setNumberOfPlayers({
+        playerId: nanoid(),
+        playerLife: 20,
+        playerName: 'DefaultPlayer',
+      });
+      setNumberOfPlayers({
+        playerId: nanoid(),
+        playerLife: 20,
+        playerName: 'DefaultPlayer',
+      });
+    }
+  };
+
   return (
     <div className="modal">
-      <h2></h2>
-
       {players.map(({ playerId, playerName }) => (
         <div className="modal_inputs" key={playerId}>
           <label htmlFor={playerId}>{playerName}</label>
@@ -30,7 +78,7 @@ const Modal = () => {
         </div>
       ))}
 
-      <div>
+      <div className="modal_settings">
         <button className="btn_reset" onClick={onResetHandler}>
           Reset
         </button>
@@ -40,6 +88,17 @@ const Modal = () => {
           onChange={(e) => setStartingLife({ life: parseInt(e.target.value) })}
         >
           {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.text}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="#players">How many players</label>
+        <select id="#players" onChange={(e) => onAddPlayersHandler(e)}>
+          {playerOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.text}
             </option>

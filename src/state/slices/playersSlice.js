@@ -7,6 +7,11 @@ const initialState = {
       playerLife: 20,
       playerName: 'DefaultPlayer',
     },
+    {
+      playerId: nanoid(),
+      playerLife: 20,
+      playerName: 'DefaultPlayer',
+    },
   ],
   isGameOver: false,
 };
@@ -79,6 +84,14 @@ const playersSlice = createSlice({
 
       state.players = newStartPlayers;
     },
+
+    setNumberOfPlayers(state, { payload }) {
+      state.players.push(payload);
+    },
+
+    setDefaultPlayers(state) {
+      state.players = initialState.players;
+    },
   },
 });
 
@@ -91,5 +104,7 @@ export const {
   setGameOver,
   resetGame,
   setStartingLife,
+  setNumberOfPlayers,
+  setDefaultPlayers,
 } = playersSlice.actions;
 export const playersReducer = playersSlice.reducer;
