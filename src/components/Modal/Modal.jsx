@@ -4,13 +4,12 @@ import { options } from '../../data/options';
 import { useActions } from '../../hooks/useActions';
 import { useSelector } from 'react-redux';
 
-const Modal = ({ setStartingLife, startingLife }) => {
-  const { closeSideMenu, changeName } = useActions();
+const Modal = ({ setStartingLife }) => {
+  const { closeSideMenu, changeName, resetGame } = useActions();
   const players = useSelector((state) => state.player.players);
 
   const onResetHandler = () => {
-    // setPlayer1Life(startingLife);
-    // setPlayer2Life(startingLife);
+    resetGame();
     closeSideMenu();
   };
 

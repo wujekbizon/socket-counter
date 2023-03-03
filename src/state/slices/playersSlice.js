@@ -4,7 +4,7 @@ const initialState = {
   players: [
     {
       playerId: nanoid(),
-      playerLife: 10,
+      playerLife: 20,
       playerName: 'DefaultPlayer',
     },
   ],
@@ -59,6 +59,15 @@ const playersSlice = createSlice({
       );
       foundPlayer.playerName = payload.name;
     },
+    resetGame(state) {
+      state.isGameOver = false;
+      const resetPlayers = state.players.map((player) => ({
+        ...player,
+        playerLife: 20,
+      }));
+
+      state.players = resetPlayers;
+    },
   },
 });
 
@@ -69,5 +78,6 @@ export const {
   subtractLifeByAmount,
   addLifeByAmount,
   setGameOver,
+  resetGame,
 } = playersSlice.actions;
 export const playersReducer = playersSlice.reducer;
