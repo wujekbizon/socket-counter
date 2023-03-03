@@ -1,11 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { modalReducer, openSideMenu, closeSideMenu } from './slices/modalSlice';
-import { playerReducer, addLife, subtractLife } from './slices/playerSlice';
+import {
+  playersReducer,
+  addLife,
+  subtractLife,
+  changeName,
+  subtractLifeByAmount,
+  addLifeByAmount,
+  setGameOver,
+} from './slices/playersSlice';
 
 export const store = configureStore({
   reducer: {
     modal: modalReducer,
-    player: playerReducer,
+    player: playersReducer,
   },
 });
 
@@ -14,4 +22,8 @@ export const actionCreators = {
   closeSideMenu,
   addLife,
   subtractLife,
+  changeName,
+  subtractLifeByAmount,
+  addLifeByAmount,
+  setGameOver,
 };

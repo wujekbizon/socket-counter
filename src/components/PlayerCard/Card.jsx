@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { GiHeartMinus, GiHeartPlus } from 'react-icons/gi';
 import { BsShieldFillMinus, BsShieldFillPlus } from 'react-icons/bs';
 import { useActions } from '../../hooks/useActions';
 import { useSelector } from 'react-redux';
 
-const Card = ({ playerName, className }) => {
-  const { addLife, subtractLife } = useActions();
-  const playerLife = useSelector((state) => state.player.playerLife);
+const Card = ({ playerLife, playerName, playerId }) => {
+  const {
+    addLife,
+    subtractLife,
+    subtractLifeByAmount,
+    addLifeByAmount,
+    setGameOver,
+  } = useActions();
+  const isGameOver = useSelector((state) => state.player.isGameOver);
 
-  // useEffect(() => {
-  //   if (playerLife <= 0) {
-  //     setPlayerLife(0);
-  //   }
-  // }, [playerLife]);
+  useEffect(() => {
+    if (playerLife <= 0) {
+      setGameOver({ id: playerId });
+    }
+  }, [playerLife]);
 
   return (
-    <section className={`${playerLife === 0 && 'lost'} ${className} card`}>
+    <section className={`${isGameOver && 'lost'}  card`}>
       <div className="player_name">
         <h2>{playerName}</h2>
       </div>
@@ -25,7 +31,7 @@ const Card = ({ playerName, className }) => {
       <div className="player_buttons">
         <div className="sub_btns">
           <button
-            onClick={() => subtractLife()}
+            onClick={() => subtractLife({ id: playerId })}
             className="btn_danger"
             disabled={playerLife === 0}
           >
@@ -33,7 +39,7 @@ const Card = ({ playerName, className }) => {
           </button>
           <button
             className="btn_danger"
-            // onClick={() => setPlayerLife(playerLife <= 0 ? 0 : playerLife - 5)}
+            onClick={() => subtractLifeByAmount({ id: playerId, amount: 5 })}
             disabled={playerLife === 0}
           >
             <BsShieldFillMinus className="icon" />
@@ -41,7 +47,7 @@ const Card = ({ playerName, className }) => {
         </div>
         <div className="add_btns">
           <button
-            onClick={() => addLife()}
+            onClick={() => addLife({ id: playerId })}
             className="btn_success"
             disabled={playerLife === 0}
           >
@@ -50,7 +56,7 @@ const Card = ({ playerName, className }) => {
           <button
             className="btn_success"
             disabled={playerLife === 0}
-            // onClick={() => setPlayerLife(playerLife + 5)}
+            onClick={() => addLifeByAmount({ id: playerId, amount: 5 })}
           >
             <BsShieldFillPlus className="icon" />
           </button>

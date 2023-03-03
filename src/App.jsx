@@ -7,12 +7,8 @@ import { useSelector } from 'react-redux';
 
 const App = () => {
   const isMenuOpen = useSelector((state) => state.modal.isMenuOpen);
-
-  const [playerName, setPlayerName] = useState('Player 1');
-  const [player2Name, setPlayer2Name] = useState('Player 2');
+  const players = useSelector((state) => state.player.players);
   const [startingLife, setStartingLife] = useState(20);
-  const [player1_life, setPlayer1Life] = useState(20);
-  const [player2_life, setPlayer2Life] = useState(20);
 
   useEffect(() => {
     if (window.__args.debug && window.__args.config.build_redirect) {
@@ -26,29 +22,13 @@ const App = () => {
     <main className="app">
       <Timer />
 
-      <Card
-        playerName={playerName}
-        player_life={player1_life}
-        setPlayerLife={setPlayer1Life}
-        className="direction"
-      />
+      {players.map((player) => (
+        <Card {...player} key={player.playerId} />
+      ))}
       <Settings />
-      <Card
-        playerName={player2Name}
-        player_life={player2_life}
-        setPlayerLife={setPlayer2Life}
-      />
+
       {isMenuOpen && (
-        <Modal
-          setPlayer2Name={setPlayer2Name}
-          setPlayerName={setPlayerName}
-          player2Name={player2Name}
-          playerName={playerName}
-          setPlayer1Life={setPlayer1Life}
-          setPlayer2Life={setPlayer2Life}
-          startingLife={startingLife}
-          setStartingLife={setStartingLife}
-        />
+        <Modal startingLife={startingLife} setStartingLife={setStartingLife} />
       )}
     </main>
   );

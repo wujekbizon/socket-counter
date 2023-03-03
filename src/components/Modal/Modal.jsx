@@ -2,51 +2,39 @@ import React, { useEffect } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
 import { options } from '../../data/options';
 import { useActions } from '../../hooks/useActions';
+import { useSelector } from 'react-redux';
 
-const Modal = ({
-  playerName,
-  player2Name,
-  setPlayer2Name,
-  setPlayerName,
-  setStartingLife,
-  setPlayer1Life,
-  setPlayer2Life,
-  startingLife,
-}) => {
-  const { closeSideMenu } = useActions();
+const Modal = ({ setStartingLife, startingLife }) => {
+  const { closeSideMenu, changeName } = useActions();
+  const players = useSelector((state) => state.player.players);
 
   const onResetHandler = () => {
-    setPlayer1Life(startingLife);
-    setPlayer2Life(startingLife);
+    // setPlayer1Life(startingLife);
+    // setPlayer2Life(startingLife);
     closeSideMenu();
   };
 
-  useEffect(() => {
-    setPlayer1Life(startingLife);
-    setPlayer2Life(startingLife);
-  }, [startingLife]);
+  // useEffect(() => {
+  //   setPlayer1Life(startingLife);
+  //   setPlayer2Life(startingLife);
+  // }, [startingLife]);
 
   return (
     <div className="modal">
       <h2></h2>
-      <div className="modal_inputs">
-        <label htmlFor="p1">Player 1</label>
-        <input
-          type="text"
-          id="p1"
-          value={playerName}
-          onChange={(e) => setPlayerName(e.target.value)}
-        />
-      </div>
-      <div className="modal_inputs">
-        <label htmlFor="p2">Player 2</label>
-        <input
-          type="text"
-          id="p2"
-          value={player2Name}
-          onChange={(e) => setPlayer2Name(e.target.value)}
-        />
-      </div>
+
+      {players.map(({ playerId, playerName }) => (
+        <div className="modal_inputs" key={playerId}>
+          <label htmlFor={playerId}>{playerName}</label>
+          <input
+            type="text"
+            id={playerId}
+            value={playerName}
+            onChange={(e) => changeName({ id: playerId, name: e.target.value })}
+          />
+        </div>
+      ))}
+
       <div>
         <button className="btn_reset" onClick={onResetHandler}>
           Reset
