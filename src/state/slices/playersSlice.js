@@ -68,6 +68,17 @@ const playersSlice = createSlice({
 
       state.players = resetPlayers;
     },
+
+    setStartingLife(state, { payload }) {
+      state.isGameOver = false;
+
+      const newStartPlayers = state.players.map((player) => ({
+        ...player,
+        playerLife: payload.life,
+      }));
+
+      state.players = newStartPlayers;
+    },
   },
 });
 
@@ -79,5 +90,6 @@ export const {
   addLifeByAmount,
   setGameOver,
   resetGame,
+  setStartingLife,
 } = playersSlice.actions;
 export const playersReducer = playersSlice.reducer;

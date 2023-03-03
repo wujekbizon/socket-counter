@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Settings from './components/Settings/Settings';
 import Card from './components/PlayerCard/Card';
 import Timer from './components/Timer/Timer';
@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 const App = () => {
   const isMenuOpen = useSelector((state) => state.modal.isMenuOpen);
   const players = useSelector((state) => state.player.players);
-  const [startingLife, setStartingLife] = useState(20);
 
   useEffect(() => {
     if (window.__args.debug && window.__args.config.build_redirect) {
@@ -27,9 +26,7 @@ const App = () => {
       ))}
       <Settings />
 
-      {isMenuOpen && (
-        <Modal startingLife={startingLife} setStartingLife={setStartingLife} />
-      )}
+      {isMenuOpen && <Modal />}
     </main>
   );
 };

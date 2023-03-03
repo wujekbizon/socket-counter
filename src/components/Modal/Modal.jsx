@@ -1,22 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FaWindowClose } from 'react-icons/fa';
 import { options } from '../../data/options';
 import { useActions } from '../../hooks/useActions';
 import { useSelector } from 'react-redux';
 
-const Modal = ({ setStartingLife }) => {
-  const { closeSideMenu, changeName, resetGame } = useActions();
+const Modal = () => {
+  const { closeSideMenu, changeName, resetGame, setStartingLife } =
+    useActions();
   const players = useSelector((state) => state.player.players);
 
   const onResetHandler = () => {
     resetGame();
     closeSideMenu();
   };
-
-  // useEffect(() => {
-  //   setPlayer1Life(startingLife);
-  //   setPlayer2Life(startingLife);
-  // }, [startingLife]);
 
   return (
     <div className="modal">
@@ -38,7 +34,11 @@ const Modal = ({ setStartingLife }) => {
         <button className="btn_reset" onClick={onResetHandler}>
           Reset
         </button>
-        <select onChange={(e) => setStartingLife(parseInt(e.target.value))}>
+        <label htmlFor="life">Starting Life</label>
+        <select
+          id="life"
+          onChange={(e) => setStartingLife({ life: parseInt(e.target.value) })}
+        >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.text}
