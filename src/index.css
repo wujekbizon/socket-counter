@@ -278,3 +278,70 @@ body {
     flex-direction: row;
   }
 }
+
+/* Timer Css */
+
+.timer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.timer_clock h4 {
+  color: white;
+  font-size: 35px;
+}
+
+.timer_presets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.timer_presets h4 {
+  color: white;
+  font-size: 20px;
+}
+
+.set_timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.set_timer button {
+  border: none;
+  background-color: transparent;
+  color: yellow;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.set_timer button:hover {
+  color: lawngreen;
+}
+
+.set_timer .icon {
+  color: grey;
+  font-size: 23px;
+}
+
+.show_timer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.btn_timer {
+  padding: 4px 15px;
+  background-color: yellowgreen;
+  color: black;
+  cursor: pointer;
+}
+
+.btn_timer:hover {
+  background-color: chartreuse;
+}

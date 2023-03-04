@@ -21,7 +21,6 @@ const App = () => {
     <main className="app">
       <div className="settings_container">
         <Settings />
-        <Timer />
       </div>
 
       <div className="cards_contanier">

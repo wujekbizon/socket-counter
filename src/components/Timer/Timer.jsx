@@ -14,30 +14,32 @@ const Timer = () => {
 
   return (
     <section className="timer">
-      <div>
-        <h4>
+      <div className="timer_clock">
+        <h4 className="show_timer">
           {minutes}:{seconds}
         </h4>
       </div>
 
-      <div>
+      <div className="timer_presets">
         <h4>Presets</h4>
         <div>
           <div className="set_timer">
-            <TfiTimer />
+            <TfiTimer className="icon" />
             <button onClick={() => setPresets(50)}>50</button>
           </div>
           <div className="set_timer">
-            <TfiTimer />
+            <TfiTimer className="icon" />
             <button onClick={() => setPresets(30)}>30</button>
           </div>
           <div className="set_timer">
-            <TfiTimer />
+            <TfiTimer className="icon" />
             <button onClick={() => setPresets(40)}>40</button>
           </div>
         </div>
       </div>
-      <button onClick={onStartTimer}>Start</button>
+      <button className="btn_timer" onClick={onStartTimer}>
+        Start
+      </button>
     </section>
   );
 };

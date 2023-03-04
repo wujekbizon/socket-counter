@@ -4,6 +4,7 @@ import { options, playerOptions } from '../../data/options';
 import { useActions } from '../../hooks/useActions';
 import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
+import Timer from '../Timer/Timer';
 
 const Modal = () => {
   const {
@@ -92,6 +93,7 @@ const Modal = () => {
             ))}
           </select>
         </div>
+        <Timer />
       </div>
 
       <button className="btn_menu-close" onClick={() => closeSideMenu()}>
