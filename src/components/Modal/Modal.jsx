@@ -16,6 +16,12 @@ const Modal = () => {
   } = useActions();
   const players = useSelector((state) => state.player.players);
 
+  const player = {
+    playerId: nanoid(),
+    playerLife: 20,
+    playerName: 'DefaultPlayer',
+  };
+
   const onResetHandler = () => {
     resetGame();
     closeSideMenu();
@@ -23,43 +29,16 @@ const Modal = () => {
 
   const onAddPlayersHandler = (e) => {
     const numPlayers = parseInt(e.target.value);
+
     if (numPlayers === 2) {
       setDefaultPlayers();
-    } else if (numPlayers === 3) {
-      setDefaultPlayers();
+      return;
+    }
+
+    if (numPlayers >= 3) {
       setNumberOfPlayers({
-        playerId: nanoid(),
-        playerLife: 20,
-        playerName: 'DefaultPlayer',
-      });
-    } else if (numPlayers === 4) {
-      setDefaultPlayers();
-      setNumberOfPlayers({
-        playerId: nanoid(),
-        playerLife: 20,
-        playerName: 'DefaultPlayer',
-      });
-      setNumberOfPlayers({
-        playerId: nanoid(),
-        playerLife: 20,
-        playerName: 'DefaultPlayer',
-      });
-    } else if (numPlayers === 5) {
-      setDefaultPlayers();
-      setNumberOfPlayers({
-        playerId: nanoid(),
-        playerLife: 20,
-        playerName: 'DefaultPlayer',
-      });
-      setNumberOfPlayers({
-        playerId: nanoid(),
-        playerLife: 20,
-        playerName: 'DefaultPlayer',
-      });
-      setNumberOfPlayers({
-        playerId: nanoid(),
-        playerLife: 20,
-        playerName: 'DefaultPlayer',
+        multiplier: numPlayers,
+        player,
       });
     }
   };

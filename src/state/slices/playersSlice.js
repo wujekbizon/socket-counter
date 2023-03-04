@@ -86,7 +86,11 @@ const playersSlice = createSlice({
     },
 
     setNumberOfPlayers(state, { payload }) {
-      state.players.push(payload);
+      const { multiplier, player } = payload;
+
+      for (let i = 2; i < multiplier; i++) {
+        state.players.push({ ...player, playerId: nanoid() });
+      }
     },
 
     setDefaultPlayers(state) {
