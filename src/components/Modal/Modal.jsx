@@ -45,52 +45,60 @@ const Modal = () => {
   };
 
   return (
-    <div className="modal">
-      {players.map(({ playerId, playerName }) => (
-        <div className="modal_inputs" key={playerId}>
-          <label htmlFor={playerId}>{playerName}</label>
-          <input
-            type="text"
-            id={playerId}
-            value={playerName}
-            onChange={(e) => changeName({ id: playerId, name: e.target.value })}
-          />
-        </div>
-      ))}
-
-      <div className="modal_settings">
-        <button className="btn_reset" onClick={onResetHandler}>
-          Reset
-        </button>
-        <label htmlFor="life">Starting Life</label>
-        <select
-          id="life"
-          onChange={(e) => setStartingLife({ life: parseInt(e.target.value) })}
-        >
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.text}
-            </option>
-          ))}
-        </select>
+    <aside className="modal">
+      <div className="modal_left">
+        {players.map(({ playerId, playerName }) => (
+          <div className="modal_inputs" key={playerId}>
+            <label htmlFor={playerId}>{playerName}</label>
+            <input
+              type="text"
+              id={playerId}
+              value={playerName}
+              onChange={(e) =>
+                changeName({ id: playerId, name: e.target.value })
+              }
+            />
+          </div>
+        ))}
       </div>
 
-      <div>
-        <label htmlFor="#players">How many players</label>
-        <select id="#players" onChange={(e) => onAddPlayersHandler(e)}>
-          {playerOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.text}
-            </option>
-          ))}
-        </select>
+      <div className="modal_right">
+        <div className="modal_settings">
+          <button className="btn_reset" onClick={onResetHandler}>
+            Reset
+          </button>
+          <label htmlFor="life">Starting Life</label>
+          <select
+            id="life"
+            onChange={(e) =>
+              setStartingLife({ life: parseInt(e.target.value) })
+            }
+          >
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.text}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="#players">How many players</label>
+          <select id="#players" onChange={(e) => onAddPlayersHandler(e)}>
+            {playerOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.text}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <button className="btn_menu-close" onClick={() => closeSideMenu()}>
         {' '}
         <FaWindowClose className="close_icon" />
       </button>
-    </div>
+    </aside>
   );
 };
 export default Modal;

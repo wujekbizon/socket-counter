@@ -42,13 +42,21 @@ body {
 .app {
   padding: 64px;
   display: flex;
-  flex-wrap: wrap;
-  /* align-items: center;
-  justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
 
 /* Card component CSS */
+
+.cards_contanier {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .card {
   padding: 15px;
   width: 350px;
@@ -150,38 +158,60 @@ body {
 
 /* Settings component CSS */
 
+.settings_container {
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .settings {
   width: 50px;
   height: 50px;
   padding: 2px 4px;
   background-color: white;
   border: 1px solid black;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 20px;
   cursor: pointer;
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 
 .menu_icon {
-  font-size: 40px;
+  font-size: 35px;
 }
 
 /* Modal Css */
 
 .modal {
-  width: 500px;
-  height: 600px;
-  min-height: 500px;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_left {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_right {
+  display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -240,4 +270,11 @@ body {
   outline: none;
   font-size: 25px;
   width: 70%;
+}
+
+@media (min-width: 786px) {
+  .modal {
+    display: flex;
+    flex-direction: row;
+  }
 }

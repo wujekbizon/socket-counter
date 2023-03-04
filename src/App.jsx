@@ -19,13 +19,16 @@ const App = () => {
 
   return (
     <main className="app">
-      <Timer />
+      <div className="settings_container">
+        <Settings />
+        <Timer />
+      </div>
 
-      {players.map((player) => (
-        <Card {...player} key={player.playerId} />
-      ))}
-      <Settings />
-
+      <div className="cards_contanier">
+        {players.map((player) => (
+          <Card {...player} key={player.playerId} />
+        ))}
+      </div>
       {isMenuOpen && <Modal />}
     </main>
   );
