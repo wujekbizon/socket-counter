@@ -21,7 +21,7 @@ const Card = ({ playerLife, playerName, playerId }) => {
   }, [playerLife]);
 
   return (
-    <section className={`${isGameOver && 'lost'}  card`}>
+    <section className={`${isGameOver && playerLife === 0 && 'lost'}  card`}>
       <div className="player_name">
         <h2>{playerName}</h2>
       </div>

@@ -36,6 +36,7 @@ const Modal = () => {
     }
 
     if (numPlayers >= 3) {
+      setDefaultPlayers();
       setNumberOfPlayers({
         multiplier: numPlayers,
         player,
