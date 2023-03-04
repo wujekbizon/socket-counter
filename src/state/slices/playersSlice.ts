@@ -24,6 +24,10 @@ const playersSlice = createSlice({
       const foundPlayer = state.players.find(
         (player) => player.playerId === payload.id
       );
+
+      if (!foundPlayer) {
+        return;
+      }
       foundPlayer.playerLife = 0;
       state.isGameOver = true;
     },
@@ -31,6 +35,10 @@ const playersSlice = createSlice({
       const foundPlayer = state.players.find(
         (player) => player.playerId === payload.id
       );
+
+      if (!foundPlayer) {
+        return;
+      }
       foundPlayer.playerLife =
         foundPlayer.playerLife <= 0 ? 0 : foundPlayer.playerLife - 1;
     },
@@ -38,6 +46,10 @@ const playersSlice = createSlice({
       const foundPlayer = state.players.find(
         (player) => player.playerId === payload.id
       );
+
+      if (!foundPlayer) {
+        return;
+      }
 
       foundPlayer.playerLife =
         foundPlayer.playerLife <= 0
@@ -48,12 +60,20 @@ const playersSlice = createSlice({
       const foundPlayer = state.players.find(
         (player) => player.playerId === payload.id
       );
+
+      if (!foundPlayer) {
+        return;
+      }
       foundPlayer.playerLife = foundPlayer.playerLife + 1;
     },
     addLifeByAmount(state, { payload }) {
       const foundPlayer = state.players.find(
         (player) => player.playerId === payload.id
       );
+
+      if (!foundPlayer) {
+        return;
+      }
 
       foundPlayer.playerLife = foundPlayer.playerLife + payload.amount;
     },
@@ -62,6 +82,10 @@ const playersSlice = createSlice({
       const foundPlayer = state.players.find(
         (player) => player.playerId === payload.id
       );
+
+      if (!foundPlayer) {
+        return;
+      }
       foundPlayer.playerName = payload.name;
     },
     resetGame(state) {

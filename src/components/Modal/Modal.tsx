@@ -1,8 +1,7 @@
-import React from 'react';
 import { FaWindowClose } from 'react-icons/fa';
 import { options, playerOptions } from '../../data/options';
 import { useActions } from '../../hooks/useActions';
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { nanoid } from '@reduxjs/toolkit';
 import Timer from '../Timer/Timer';
 
@@ -15,7 +14,7 @@ const Modal = () => {
     setNumberOfPlayers,
     setDefaultPlayers,
   } = useActions();
-  const players = useSelector((state) => state.player.players);
+  const players = useTypedSelector((state) => state.player.players);
 
   const player = {
     playerId: nanoid(),
@@ -28,7 +27,9 @@ const Modal = () => {
     closeSideMenu();
   };
 
-  const onAddPlayersHandler = (e) => {
+  const onAddPlayersHandler: React.ChangeEventHandler<HTMLSelectElement> = (
+    e
+  ) => {
     const numPlayers = parseInt(e.target.value);
 
     if (numPlayers === 2) {

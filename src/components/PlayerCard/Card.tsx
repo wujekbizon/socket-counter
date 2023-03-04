@@ -1,10 +1,16 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { GiHeartMinus, GiHeartPlus } from 'react-icons/gi';
 import { BsShieldFillMinus, BsShieldFillPlus } from 'react-icons/bs';
 import { useActions } from '../../hooks/useActions';
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
-const Card = ({ playerLife, playerName, playerId }) => {
+interface Player {
+  playerId: string;
+  playerLife: number;
+  playerName: string;
+}
+
+const Card = ({ playerLife, playerName, playerId }: Player) => {
   const {
     addLife,
     subtractLife,
@@ -12,7 +18,7 @@ const Card = ({ playerLife, playerName, playerId }) => {
     addLifeByAmount,
     setGameOver,
   } = useActions();
-  const isGameOver = useSelector((state) => state.player.isGameOver);
+  const isGameOver = useTypedSelector((state) => state.player.isGameOver);
 
   useEffect(() => {
     if (playerLife <= 0) {

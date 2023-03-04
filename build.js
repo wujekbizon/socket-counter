@@ -22,7 +22,7 @@ async function main() {
   const prod = process.argv.find((s) => s.includes('--prod'));
 
   const params = {
-    entryPoints: ['src/index.jsx'],
+    entryPoints: ['src/index.tsx'],
     format: 'esm',
     bundle: true,
     minify: !!prod,

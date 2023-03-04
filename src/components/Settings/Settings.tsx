@@ -1,4 +1,3 @@
-import React from 'react';
 import { TiThMenuOutline } from 'react-icons/ti';
 import { useActions } from '../../hooks/useActions';
 

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTimer } from '../../hooks/useTimer';
 import { TfiTimer } from 'react-icons/tfi';
 
-let date = new Date(Date.now() + 60 * 20 * 1000);
+let date: Date = new Date(Date.now() + 60 * 20 * 1000);
 
 const Timer = () => {
   const [presets, setPresets] = useState(20);

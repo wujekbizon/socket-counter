@@ -4,12 +4,15 @@ const SECOND = 1_000;
 const MINUTE = SECOND * 60;
 const HOUR = MINUTE * 60;
 
-export const useTimer = (time, interval = SECOND) => {
-  const [timespan, setTimespan] = useState(new Date(time) - Date.now());
+export const useTimer = (time: any, interval = SECOND) => {
+  const date = new Date(time).valueOf() - Date.now().valueOf();
+  const [timespan, setTimespan] = useState(date);
+
+  let intervalId: NodeJS.Timer;
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTimespan(new Date(time) - Date.now());
+    intervalId = setInterval(() => {
+      setTimespan(date);
     }, interval);
 
     return () => {
