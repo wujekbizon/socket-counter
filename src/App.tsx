@@ -25,7 +25,7 @@ const App = () => {
   const isMenuOpen = useTypedSelector((state) => state.modal.isMenuOpen);
   const players = useTypedSelector((state) => state.player.players);
 
-  const onKeyPressReload = (e: any) => {
+  const onKeyPressReload = (e: KeyboardEvent) => {
     if (
       e.key === 'Alt' &&
       window.__args.debug &&
@@ -46,7 +46,9 @@ const App = () => {
 
   return (
     <main className="app">
-      <div className="settings_container">{/* <Settings /> */}</div>
+      <div className="settings_container">
+        <Settings />
+      </div>
       <h1>Your operation system is {os.platform()}</h1>
       <div className="cards_contanier">
         {players.map((player) => (
