@@ -6,19 +6,32 @@ import { useTypedSelector } from './hooks/useTypedSelector';
 
 import os from 'socket:os';
 
-let window: Window & typeof globalThis;
+declare const window: Window &
+  typeof globalThis & {
+    __args: {
+      argv: string[];
+      config: Config;
+      debug: number;
+      env: {
+        USER: string;
+        TMPDIR: string;
+        PWD: string;
+      };
+      index: number;
+    };
+  };
 
 const App = () => {
   const isMenuOpen = useTypedSelector((state) => state.modal.isMenuOpen);
   const players = useTypedSelector((state) => state.player.players);
 
-  // useEffect(() => {
-  //   if (window.__args.debug && window.__args.config.build_redirect) {
-  //     window.location = window.__args.config.build_redirect;
-  //     console.log(window.location);
-  //     console.log(window.__args);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (window.__args.debug && window.__args.config.build_redirect) {
+      window.location = window.__args.config.build_redirect;
+    }
+
+    console.log(window.__args);
+  }, []);
 
   return (
     <main className="app">
