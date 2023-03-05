@@ -1,7 +1,12 @@
+import { useEffect } from 'react';
 import Settings from './components/Settings/Settings';
 import Card from './components/PlayerCard/Card';
 import Modal from './components/Modal/Modal';
 import { useTypedSelector } from './hooks/useTypedSelector';
+
+import os from 'socket:os';
+
+let window: Window & typeof globalThis;
 
 const App = () => {
   const isMenuOpen = useTypedSelector((state) => state.modal.isMenuOpen);
@@ -14,6 +19,8 @@ const App = () => {
   //     console.log(window.__args);
   //   }
   // }, []);
+
+  // console.log(os.platform());
 
   return (
     <main className="app">
