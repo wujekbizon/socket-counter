@@ -4,8 +4,6 @@ import Card from './components/PlayerCard/Card';
 import Modal from './components/Modal/Modal';
 import { useTypedSelector } from './hooks/useTypedSelector';
 
-import os from 'socket:os';
-
 declare const window: Window &
   typeof globalThis & {
     __args: {
@@ -32,7 +30,6 @@ const App = () => {
       window.__args.config.build_redirect
     ) {
       window.location = window.__args.config.build_redirect;
-      console.log('Hot-Reload');
     }
   };
 
@@ -49,7 +46,7 @@ const App = () => {
       <div className="settings_container">
         <Settings />
       </div>
-      <h1>Your operation system is {os.platform()}</h1>
+
       <div className="cards_contanier">
         {players.map((player) => (
           <Card {...player} key={player.playerId} />
