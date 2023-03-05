@@ -20,14 +20,12 @@ const App = () => {
   //   }
   // }, []);
 
-  // console.log(os.platform());
-
   return (
     <main className="app">
       <div className="settings_container">
         <Settings />
       </div>
-
+      <h1>Your operation system is {os.platform()}</h1>
       <div className="cards_contanier">
         {players.map((player) => (
           <Card {...player} key={player.playerId} />
