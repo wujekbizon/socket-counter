@@ -25,19 +25,28 @@ const App = () => {
   const isMenuOpen = useTypedSelector((state) => state.modal.isMenuOpen);
   const players = useTypedSelector((state) => state.player.players);
 
-  useEffect(() => {
-    if (window.__args.debug && window.__args.config.build_redirect) {
+  const onKeyPressReload = (e: any) => {
+    if (
+      e.key === 'Alt' &&
+      window.__args.debug &&
+      window.__args.config.build_redirect
+    ) {
       window.location = window.__args.config.build_redirect;
+      console.log('Hot-Reload');
     }
+  };
 
-    console.log(window.__args);
-  }, []);
+  useEffect(() => {
+    addEventListener('keydown', onKeyPressReload);
+
+    return () => {
+      removeEventListener('keydown', onKeyPressReload);
+    };
+  }, [onKeyPressReload]);
 
   return (
     <main className="app">
-      <div className="settings_container">
-        <Settings />
-      </div>
+      <div className="settings_container">{/* <Settings /> */}</div>
       <h1>Your operation system is {os.platform()}</h1>
       <div className="cards_contanier">
         {players.map((player) => (
